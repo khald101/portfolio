@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cairo: 'Cairo', system-ui, sans-serif;
+    --font-outfit: 'Outfit', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    background-color: #030712;
+    color: #f1f5f9;
+    font-family: var(--font-cairo);
+    overflow-x: hidden;
+  }
+
+  [dir="ltr"] {
+    font-family: var(--font-outfit);
+  }
+
+  [dir="ltr"] .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Luxury Glow & Glass Utilities */
+.glass-panel {
+  background: rgba(10, 16, 31, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(0, 240, 255, 0.12), inset 0 0 20px 0 rgba(56, 189, 248, 0.08);
+  transform: translateY(-4px);
+}
+
+.glow-blue {
+  box-shadow: 0 0 40px -10px rgba(0, 240, 255, 0.35);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 24px rgba(0, 240, 255, 0.55);
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(60deg, #0f172a, #020617);
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.4), rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.4));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  border: 2px solid #030712;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
+
+/* Subtle Animated Mesh Background */
+.bg-mesh-gradient {
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(14, 165, 233, 0.12) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(6, 182, 212, 0.08) 0px, transparent 50%);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
